@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultoria Veterinária Equina Premium - Dr. Heliton Rodrigo</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Reset Básico e Estilos Gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Ajuste para o header fixo */
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif; /* Nova fonte */
+            line-height: 1.7; /* Levemente maior para Poppins */
+            color: #444; /* Um cinza um pouco mais suave */
+            background-color: #fdfdfd; /* Fundo quase branco */
+            overflow-x: hidden; /* Previne scroll horizontal indesejado */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px; /* Um pouco mais de padding */
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1.2rem;
+            color: #1a535c; /* Verde/Azul escuro */
+            font-weight: 600;
+        }
+         h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+         }
+         h3 {
+            font-size: 1.4rem;
+         }
+
+
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        section {
+            padding: 70px 0;
+            position: relative; /* Necessário para alguns pseudo-elementos se aplicados */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInSection 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; /* Efeito mais vivo */
+        }
+
+        /* Animação de Fade-in */
+        @keyframes fadeInSection {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cabeçalho */
+        header {
+            background: linear-gradient(90deg, #1a535c 0%, #2a9d8f 100%); /* Gradiente verde/azul */
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+
+        header h1 {
+            margin-bottom: 0;
+            color: #fff;
+            font-size: 2rem;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        /* Banner Slider */
+        #banner {
+            padding: 0;
+            position: relative;
+            width: 100%;
+            height: 65vh; /* Um pouco mais alto */
+            overflow: hidden;
+            background-color: #ccc;
+        }
+
+        .slider-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.6s ease-in-out; /* Transição mais suave */
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.5)); /* Gradiente overlay */
+            z-index: 1;
+        }
+
+        .slide-content {
+            position: relative;
+            z-index: 2;
+            max-width: 85%;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.2); /* Fundo semi-transparente para legibilidade */
+            border-radius: 10px;
+        }
+
+        .slide-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+            font-weight: 700;
+        }
+        .slide-content p {
+            font-size: 1.3rem;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+            font-weight: 300;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 25px;
+            z-index: 3;
+        }
+
+        .slider-nav button {
+            background-color: rgba(26, 83, 92, 0.7); /* Cor base do header com transparência */
+            color: #fff;
+            border: none;
+            padding: 12px 18px;
+            font-size: 1.8rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .slider-nav button:hover {
+            background-color: rgba(42, 157, 143, 0.9); /* Cor secundária do header */
+            transform: scale(1.1);
+        }
+
+        /* Seção de Serviços */
+        #services {
+            background-color: #f8f9fa; /* Fundo ligeiramente diferente */
+             border-top: 5px solid #e9ecef;
+             border-bottom: 5px solid #e9ecef;
+        }
+
+        #services .container {
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid; /* Usando grid para melhor controle */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsivo */
+            gap: 35px;
+            margin-top: 45px;
+        }
+
+        .service-card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px; /* Bordas mais arredondadas */
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.07);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            display: flex; /* Para alinhar ícone e texto */
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px) scale(1.02); /* Efeito mais pronunciado */
+            box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+        }
+
+        .service-card .service-icon { /* Container do ícone */
+            font-size: 3rem; /* Tamanho do ícone */
+            color: #fff;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #2a9d8f, #1a535c); /* Gradiente no ícone */
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(26, 83, 92, 0.3);
+        }
+
+        .service-card h3 {
+            color: #1a535c; /* Cor principal */
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Seção de Depoimentos */
+        #testimonials {
+            background-color: #e6f7f6; /* Verde bem claro */
+        }
+         #testimonials .container {
+            text-align: center;
+         }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial {
+            background-color: #fff;
+            border-left: 6px solid #2a9d8f; /* Verde secundário */
+            padding: 25px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.06);
+            text-align: left;
+            position: relative; /* Para as aspas */
+            transition: transform 0.3s ease;
+        }
+        .testimonial:hover {
+             transform: translateY(-5px);
+        }
+
+        .testimonial::before { /* Aspas decorativas */
+             content: "\f10d"; /* Ícone de aspas FontAwesome */
+             font-family: "Font Awesome 6 Free";
+             font-weight: 900;
+             position: absolute;
+             top: 15px;
+             left: -15px; /* Posição relativa à borda */
+             font-size: 2.5rem;
+             color: rgba(42, 157, 143, 0.2); /* Verde com opacidade */
+             z-index: 0;
+        }
+
+
+        .testimonial blockquote {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+            border: none;
+            padding: 0;
+            position: relative; /* Para ficar acima das aspas */
+            z-index: 1;
+        }
+
+        .testimonial cite {
+            font-weight: 600; /* Mais forte */
+            color: #1a535c;
+            display: block;
+            margin-top: 1rem;
+            font-style: normal; /* Remover itálico padrão */
+        }
+
+        /* Seção FAQ */
+        #faq {
+            background-color: #fff;
+        }
+         #faq .container {
+            max-width: 850px;
+         }
+        #faq h2 {
+            text-align: center;
+            margin-bottom: 40px; /* Mais espaço */
+        }
+
+        .faq-item {
+            background-color: #fff;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease;
+        }
+         .faq-item:hover {
+             box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+         }
+
+
+        .faq-question {
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa;
+            font-weight: 600; /* Mais destaque */
+            color: #1a535c;
+            transition: background-color 0.3s ease;
+            border-bottom: 1px solid #e9ecef; /* Linha sutil */
+        }
+         .faq-item.active .faq-question {
+             background-color: #e6f7f6; /* Cor de fundo quando ativo */
+             border-bottom-color: transparent;
+         }
+
+
+        .faq-question:hover {
+            background-color: #e6f7f6; /* Verde claro no hover */
+        }
+
+        .faq-question::after {
+            content: '\f078'; /* Chevron down FontAwesome */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            font-size: 0.9rem; /* Tamanho ajustado */
+            color: #2a9d8f;
+            transition: transform 0.4s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, padding 0.5s ease-out;
+            background-color: #fff;
+            color: #555;
+            font-size: 0.95rem; /* Levemente menor */
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px 25px;
+            max-height: 400px; /* Aumentar limite */
+        }
+
+
+        /* Botão Flutuante WhatsApp */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #25D366, #128C7E); /* Gradiente WhatsApp */
+            color: #fff;
+            width: 65px; /* Maior */
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            z-index: 1001;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-button i { /* Usando Font Awesome */
+             font-size: 2rem;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.15) rotate(10deg); /* Efeito mais divertido */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Detalhe de Grama SVG */
+        .grass-footer {
+            position: fixed; /* Fixo na parte inferior */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Altura da grama */
+            z-index: 50; /* Abaixo do conteúdo principal mas acima do fundo */
+            pointer-events: none; /* Para não interferir com cliques */
+            overflow: hidden; /* Garante que SVG não ultrapasse */
+        }
+        .grass-footer svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto; /* Mantém proporção */
+            fill: #a8d8b9; /* Verde pastel para a grama */
+            opacity: 0.6; /* Suavizar */
+        }
+
+
+        /* Animação de Canto */
+        .corner-animation {
+            position: fixed;
+            bottom: 20px;
+            left: 20px; /* Canto inferior esquerdo */
+            font-size: 2.5rem;
+            color: #2a9d8f; /* Verde secundário */
+            opacity: 0.7;
+            z-index: 1002; /* Acima da grama, mas pode ficar abaixo do WhatsApp se preferir */
+            animation: pulse 2.5s infinite ease-in-out;
+            display: none; /* Esconder por padrão em telas pequenas */
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.15); opacity: 0.9; }
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 60px 20px 30px 20px;
+            background-color: #e0e5e5; /* Cor de fundo */
+            color: #ffffff; /* Alterado para branco puro */
+            color: #e0e0e0; /* Cor do texto */
+            font-size: 1rem;
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 100;
+        }
+        footer .horse-icon {
+             position: absolute;
+             bottom: 15px;
+             right: 25px;
+             font-size: 2rem;
+             color: rgb(248, 238, 238); /* Bem sutil */
+             opacity: 0.5;
+        }
+
+
+        /* Responsividade */
+        @media (min-width: 769px) {
+             .corner-animation {
+                 display: block; /* Mostra a animação do canto em telas maiores */
+             }
+        }
+
+
+        @media (max-width: 992px) {
+            .testimonial-grid {
+                 grid-template-columns: 1fr; /* Uma coluna para depoimentos */
+                 gap: 25px;
+            }
+             .testimonial {
+                 max-width: 600px; /* Limita largura em coluna única */
+                 margin: 0 auto; /* Centraliza */
+             }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                 font-size: 1.6rem;
+            }
+            #banner {
+                height: 55vh;
+            }
+             .slide-content h2 {
+                 font-size: 2rem;
+             }
+            .slide-content p {
+                font-size: 1.1rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr; /* Uma coluna */
+                gap: 25px;
+            }
+            .service-card {
+                 max-width: 400px;
+                 margin: 0 auto;
+            }
+             .faq-item {
+                margin-bottom: 10px;
+             }
+            .faq-question, .faq-answer {
+                 font-size: 0.9rem;
+                 padding: 15px 20px;
+            }
+            .whatsapp-button {
+                width: 60px;
+                height: 60px;
+                bottom: 20px;
+                right: 20px;
+            }
+             .whatsapp-button i {
+                 font-size: 1.8rem;
+            }
+            .grass-footer {
+                height: 30px; /* Grama menor */
+            }
+             footer {
+                 padding-top: 40px;
+             }
+             footer .horse-icon {
+                 font-size: 1.5rem;
+                 right: 15px;
+                 bottom: 10px;
+             }
+        }
+
+         @media (max-width: 480px) {
+             header h1 {
+                 font-size: 1.4rem;
+             }
+             #banner {
+                 height: 45vh;
+             }
+             .slide-content {
+                padding: 15px;
+             }
+             .slide-content h2 {
+                 font-size: 1.6rem;
+             }
+             .slide-content p {
+                font-size: 0.9rem;
+             }
+             .slider-nav button {
+                padding: 10px 15px;
+                font-size: 1.5rem;
+             }
+             section {
+                 padding: 50px 0;
+             }
+             .service-card {
+                 padding: 25px 20px;
+             }
+              h2 { font-size: 1.8rem; }
+              h3 { font-size: 1.2rem; }
+         }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1><i class="fas fa-horse-head"></i> Consultoria Veterinária Equina</h1>
+    </header>
+
+    <main>
+        <!-- Seção Banner Slider -->
+        <section id="banner">
+            <div class="slider-container">
+                <div class="slide" style="background-image: url(img3.jpg);">
+                    <div class="slide-content">
+                        <h2>Saúde e Excelência para seu Equino</h2>
+                        <p>Cuidado veterinário especializado e moderno ao seu alcance.</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url(img2.jpg);">
+                     <div class="slide-content">
+                        <h2>Inovação no Cuidado: Telemedicina</h2>
+                        <p>Consultas e acompanhamento veterinário onde você estiver.</p>
+                    </div>
+                </div>
+                <div class="slide" style="background-image: url(img1.jpg);">
+                     <div class="slide-content">
+                        <h2>Performance e Bem-Estar</h2>
+                        <p>Consultoria completa para o manejo ideal do seu cavalo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                <button id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Seção de Serviços -->
+        <section id="services">
+            <div class="container">
+                <h2>Nossos Serviços Especializados</h2>
+                <p>Soluções completas e personalizadas para a saúde equina.</p>
+                <div class="services-grid">
+                    <div class="service-card">
+                         <div class="service-icon"><i class="fas fa-laptop-medical"></i></div>
+                        <h3>Telemedicina Veterinária</h3>
+                        <p>Agilidade e conveniência com consultas e suporte online especializado para equinos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon"><i class="fas fa-notes-medical"></i></div>
+                        <h3>Cirurgias e Procedimentos</h3>
+                        <p>Intervenções cirúrgicas seguras e eficazes, utilizando técnicas avançadas e cuidado dedicado.</p>
+                    </div>
+                    <div class="service-card">
+                         <div class="service-icon"><i class="fas fa-seedling"></i></div>
+                        <h3>Consultoria de Trato Equino</h3>
+                        <p>Otimize nutrição, manejo e bem-estar do seu plantel com nossa orientação especializada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Depoimentos -->
+        <section id="testimonials">
+            <div class="container">
+                <h2>Confiança e Resultados</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial">
+                        <blockquote>
+                            "A telemedicina foi uma mão na roda! Consegui orientação rápida e precisa sem precisar deslocar o animal. Serviço fantástico!"
+                        </blockquote>
+                        <cite>- João Silva, Haras Primavera</cite>
+                    </div>
+                    <div class="testimonial">
+                        <blockquote>
+                            "Implementamos as sugestões da consultoria de trato e a diferença na saúde e disposição dos cavalos é notável. Investimento que valeu cada centavo."
+                        </blockquote>
+                        <cite>- Maria Oliveira, Criadora Apaixonada</cite>
+                    </div>
+                     <div class="testimonial">
+                        <blockquote>
+                            "Passamos por uma cirurgia delicada e fomos muito bem assistidos. Profissionalismo exemplar e atenção total no pós-operatório. Gratidão!"
+                        </blockquote>
+                        <cite>- Carlos Souza, Centro Hípico Estrela</cite>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção FAQ -->
+        <section id="faq">
+            <div class="container">
+                <h2>Perguntas Frequentes</h2>
+                <div class="faq-item">
+                    <div class="faq-question">Como agendar uma consulta de telemedicina?</div>
+                    <div class="faq-answer">
+                        <p>É simples! Entre em contato conosco via WhatsApp ou telefone. Explicaremos como funciona, quais informações/mídias são necessárias (fotos, vídeos) e agendaremos o melhor horário para a vídeo chamada.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Quais tipos de cirurgia vocês realizam?</div>
+                    <div class="faq-answer">
+                        <p>Realizamos uma variedade de procedimentos, desde cirurgias eletivas (como castrações) até procedimentos mais complexos e emergenciais. Entre em contato para discutir o caso específico do seu animal.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <div class="faq-question">A consultoria de trato serve para qualquer tipo de cavalo?</div>
+                    <div class="faq-answer">
+                        <p>Sim! Adaptamos nossa consultoria para as necessidades específicas de cada animal, seja ele de esporte, trabalho, lazer ou reprodução. Analisamos a rotina, dieta, instalações e objetivos para criar um plano personalizado.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <div class="faq-question">Qual a área de atendimento presencial?</div>
+                    <div class="faq-answer">
+                        <p>Nossa base de atendimento presencial cobre [Sua Região/Cidades]. Avaliamos deslocamentos para outras localidades mediante consulta prévia. Entre em contato para verificar a disponibilidade em sua área.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Detalhe de Grama SVG -->
+    <div class="grass-footer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120">
+            <path d="M0,96L60,90.7C120,85,240,75,360,80C480,85,600,107,720,112C840,117,960,107,1080,96C1200,85,1320,75,1380,69.3L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+            <path d="M0,100L40,105C80,110,160,120,240,115C320,110,400,90,480,85C560,80,640,90,720,105C800,120,880,140,960,135C1040,130,1120,100,1200,90C1280,80,1360,90,1400,95L1440,100L1440,120L1400,120C1360,120,1280,120,1200,120C1120,120,1040,120,960,120C880,120,800,120,720,120C640,120,560,120,480,120C400,120,320,120,240,120C160,120,80,120,40,120L0,120Z" style="fill: #8fbc8f; opacity: 0.5;"></path> <!-- Verde mais escuro e opaco por baixo -->
+        </svg>
+    </div>
+
+
+    <!-- Animação de Canto -->
+    <div class="corner-animation">
+        <i class="fas fa-horseshoe"></i>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Consultoria Veterinária Equina Premium - Dr. Heliton Rodrigo. Todos os direitos reservados.</p>
+            <p>Cuidando com paixão e profissionalismo.</p>
+             <i class="fas fa-horse horse-icon"></i> <!-- Ícone de cavalo no rodapé -->
+        </div>
+    </footer>
+
+    <!-- Botão Flutuante WhatsApp -->
+    <a href="https://api.whatsapp.com/send?phone=554796489148&text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20o%20Dr.%20Helliton%21." class="whatsapp-button" target="_blank" title="Fale Conosco pelo WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // ** Funcionalidade do Slider **
+        const sliderContainer = document.querySelector('.slider-container');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let autoPlayInterval;
+
+        function updateSliderPosition() {
+            sliderContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        function showNextSlide() {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateSliderPosition();
+        }
+
+        function showPrevSlide() {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateSliderPosition();
+        }
+
+        function startAutoPlay() {
+            clearInterval(autoPlayInterval); // Limpa intervalo anterior se houver
+            autoPlayInterval = setInterval(showNextSlide, 6000); // Aumentei o tempo para 6s
+        }
+
+        // Event Listeners para botões
+        nextBtn.addEventListener('click', () => {
+            showNextSlide();
+            startAutoPlay(); // Reinicia o timer ao clicar manualmente
+        });
+        prevBtn.addEventListener('click', () => {
+            showPrevSlide();
+            startAutoPlay(); // Reinicia o timer
+        });
+
+        // Inicia Auto-play
+        startAutoPlay();
+
+        // Pausar auto-play ao passar o mouse (opcional, mas bom para UX)
+        const bannerSection = document.getElementById('banner');
+        bannerSection.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        bannerSection.addEventListener('mouseleave', startAutoPlay); // Retoma ao tirar o mouse
+
+
+        // ** Funcionalidade do FAQ (Acordeão) **
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+
+            question.addEventListener('click', () => {
+                const isOpen = item.classList.contains('active');
+
+                // Fecha todos os itens antes de abrir o clicado (opcional, pode remover essa linha se quiser múltiplos abertos)
+                faqItems.forEach(i => i.classList.remove('active'));
+
+                // Se não estava aberto, abre o item clicado
+                if (!isOpen) {
+                    item.classList.add('active');
+                }
+                // Se já estava aberto, o loop acima já o fechou.
+            });
+        });
+
+         // ** Animação de Fade-in das Seções (Gatilho via CSS Animation) **
+         // O CSS já cuida disso com @keyframes e animation aplicado a 'section'.
+         // O JS Observer pode ser usado para gatilhos mais complexos, mas não é estritamente necessário aqui.
+
+         // Pequeno ajuste para garantir que a animação das seções reinicie se o usuário rolar para cima e voltar
+         // (Isso pode ser mais complexo de fazer perfeitamente sem bibliotecas,
+         // a abordagem CSS atual dispara uma vez quando o elemento entra no DOM/é renderizado)
+         // Para um efeito on-scroll mais robusto, IntersectionObserver seria melhor:
+
+         /* Exemplo com Intersection Observer (opcional, descomente se preferir)
+
+         const sections = document.querySelectorAll('section');
+
+         const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger quando 15% da seção estiver visível
+         };
+
+         const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1'; // Aplica estilo diretamente
+                    entry.target.style.transform = 'translateY(0)';
+                    // Opcional: Para de observar após a primeira vez
+                    // observer.unobserve(entry.target);
+                } else {
+                     // Opcional: Reseta se sair da tela (para animar de novo ao voltar)
+                     // entry.target.style.opacity = '0';
+                     // entry.target.style.transform = 'translateY(30px)';
+                }
+            });
+         }, observerOptions);
+
+         sections.forEach(section => {
+             // Define estado inicial para o Observer controlar
+             section.style.opacity = '0';
+             section.style.transform = 'translateY(30px)';
+             section.style.transition = 'opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.68, -0.55, 0.27, 1.55)'; // Adiciona transição aqui se usar Observer
+             sectionObserver.observe(section);
+         });
+
+         // Se usar o Observer, remova ou comente as propriedades `opacity`, `transform` e `animation` do seletor `section` no CSS.
+         */
+
+    </script>
+
+</body>
+</html>
